@@ -1,4 +1,5 @@
 import { AppProps } from "next/app";
+import { useEffect } from "react";
 import "../styles/splash.css";
 import "../styles/style.css";
 

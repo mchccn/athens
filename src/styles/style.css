@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400&family=Catamaran:wght@100;200;300;400&family=Fira+Code:wght@300;400&display=swap");
+
 *,
 *::before,
 *::after {
@@ -23,7 +24,7 @@ html {
     --clr-side: #818cf8;
     --clr-red: #f04847;
     --clr-light: #fafafa;
-    --clr-light-grey: #eeeeee;
+    --clr-light-grey: #dedede;
     --clr-dark-grey: #999999;
 
     height: 100%;
@@ -84,6 +85,14 @@ a {
     cursor: pointer;
     color: inherit;
     text-decoration: none;
+}
+
+.purple {
+    color: var(--clr-main);
+}
+
+.lpurple {
+    color: var(--clr-side);
 }
 
 @media (min-width: 800px) {

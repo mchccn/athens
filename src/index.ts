@@ -1,6 +1,6 @@
 import mongo from "connect-mongo";
 import { config as dotenv } from "dotenv";
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import session from "express-session";
 import next from "next";
 import passport from "passport";
@@ -18,6 +18,7 @@ export { dev, port, app, handle };
 (async () => {
     try {
         const auth = (await import("./server/routes/auth")).default;
+        const api = (await import("./server/routes/api")).default;
 
         const connection = await connect();
         const MongoStore = mongo(session);
@@ -25,6 +26,12 @@ export { dev, port, app, handle };
         await app.prepare();
 
         const server = express();
+
+        const requireAuth = (req: Request, res: Response, next: NextFunction) => {
+            if (!req.user) return res.redirect("/");
+
+            return next();
+        };
 
         server.use(
             session({
@@ -55,14 +62,14 @@ export { dev, port, app, handle };
         );
 
         server.use("/auth", auth);
+        server.use("/api", api);
 
-        server.get("/", (req, res) => handle(req, res));
-
-        server.use((req, res, next) => {
-            if (!req.user) return res.redirect("/");
-
-            return next();
-        });
+        server.use("/settings", requireAuth);
+        server.use("/premium", requireAuth);
+        server.use("/notes", requireAuth);
+        server.use("/outlines", requireAuth);
+        server.use("/notes/:id", requireAuth);
+        server.use("/outlines/:id", requireAuth);
 
         server.get("*", (req, res) => handle(req, res));
 

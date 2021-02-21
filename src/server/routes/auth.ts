@@ -2,7 +2,7 @@ import express from "express";
 import fetch from "node-fetch";
 import passport from "passport";
 import { Strategy } from "passport-github";
-import users from "../database/user";
+import users from "../database/models/user";
 
 passport.serializeUser(async (user, done) => {
     //@ts-ignore
