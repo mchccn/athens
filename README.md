@@ -10,10 +10,8 @@ _Routes_
 
 ```
 /                             Home page
-/notes*                       User's notes
-/notes/:id*                   View and manage a note
-/outlines*                    User's outlines
-/outlines/:id*                View and manage an outline
+/*                            User's notes
+/:id*                         View and manage a note
 /settings*                    User's settings
 /premium*                     View premium plans
 ```
@@ -24,14 +22,10 @@ _API Routes_
 /auth                         GET        Authentication
 /auth/redirect                GET        Callback URI
 /auth/logout                  GET        Log out
-/api/notes/:username          GET        User's notes
-/api/outlines/:username       GET        User's outlines
-/api/edit/note*               POST       Edit a note
-/api/edit/outline*            POST       Edit an outline
-/api/delete/note*             POST       Delete a note
-/api/delete/outline*          POST       Delete an outline
-/api/new/note*                POST       Create a new note
-/api/new/outline*             POST       Create a new outline
+/api/notes/:email             GET        User's notes
+/api/edit*                    POST       Edit a note
+/api/delete*                  POST       Delete a note
+/api/new*                     POST       Create a new note
 /api/explore?q=:query         GET        Search other notes and outlines
 /api/user/delete*             POST       Delete user's account
 /api/user/username*           POST       Update user's username
@@ -49,11 +43,6 @@ notes            User's notes
   name
   note
   website
-  private
-  id
-outlines         User's outlines
-  name
-  outline
   private
   id
 premium          User's premium plans
@@ -74,19 +63,15 @@ passport-github       GitHub Authentication Strategy
 mongodb               Database driver
 mongoose              MongoDB ORM
 remark                Markdown parser
-uuid                  UUID generation
 ```
 
 **Athens Project Limits**
 
 ```
-notes          48 notes
-  name         64 chars
-  note         1024 chars
-  website      256 chars
-outlines       12 outlines
-  name         72 chars
-  outline      4096 chars
+notes          64 notes
+  name         96 chars
+  note         2048 chars
+  website      512 chars
 ```
 
 **Athens Project Premium Perks**
@@ -95,8 +80,6 @@ _Privacy ($1/month) – Make private notes and outlines_
 
 _More Notes ($2/month) – Note limit is doubled_
 
-_More Outlines ($3/month) – Outline limit is doubled_
-
 _Avid Writer ($5/month) – Character limits are doubled_
 
-_Professional ($12/month) – Note and outline limits are g o n e_
+_Professional ($12/month) – Note limits are g o n e_
