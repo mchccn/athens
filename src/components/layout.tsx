@@ -1,11 +1,13 @@
 import Head from "next/head";
+import Splash from "./splash";
 
 interface ILayoutProps {
     children: React.ReactNode;
     title?: string;
+    user: any;
 }
 
-export default function Layout({ children, title }: ILayoutProps) {
+export default function Layout({ children, title, user }: ILayoutProps) {
     return (
         <div>
             <Head>
@@ -28,7 +30,7 @@ export default function Layout({ children, title }: ILayoutProps) {
                 <title>{title ? `Athens | ${title}` : "Athens"}</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className="App">{children}</div>
+            {user ? <div className="app">{children}</div> : <Splash />}
         </div>
     );
 }

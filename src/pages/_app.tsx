@@ -1,4 +1,5 @@
 import { AppProps } from "next/app";
+import "../styles/splash.css";
 import "../styles/style.css";
 
 function App({ Component, pageProps }: AppProps) {

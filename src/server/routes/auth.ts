@@ -25,8 +25,6 @@ passport.use(
         },
         async (accessToken, refreshToken, profile, done) => {
             try {
-                // console.log(profile);
-
                 const emails = await (
                     await fetch("https://api.github.com/user/emails", {
                         headers: {
@@ -35,9 +33,9 @@ passport.use(
                     })
                 ).json();
 
-                console.log(emails);
-
-                const email = profile.emails?.length ? profile.emails?.[0].value : undefined;
+                const email = profile.emails?.length
+                    ? profile.emails?.[0].value
+                    : emails.find((e: any) => e.primary).email || undefined;
 
                 if (!email) throw new Error("No email detected.");
 

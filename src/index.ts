@@ -56,6 +56,14 @@ export { dev, port, app, handle };
 
         server.use("/auth", auth);
 
+        server.get("/", (req, res) => handle(req, res));
+
+        server.use((req, res, next) => {
+            if (!req.user) return res.redirect("/");
+
+            return next();
+        });
+
         server.get("*", (req, res) => handle(req, res));
 
         server.listen(port, () => console.log("Server listening on port 3000!"));
