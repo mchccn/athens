@@ -3,7 +3,9 @@
 #### This repository is for the [Cursors] does the entire fucking thing in one week challenge
 
 **Athens Project Routing**
+
 _A \* means authentication is required._
+
 _Routes_
 
 ```
@@ -59,6 +61,7 @@ isSubscribed     Is the user subscribed (so we can get that moolah every month)
 ```
 
 **Athens Project Packages**
+
 _Excluding type definitions_
 
 ```
@@ -87,8 +90,13 @@ outlines       12 outlines
 ```
 
 **Athens Project Premium Perks**
+
 _Privacy ($1/month) – Make private notes and outlines_
+
 _More Notes ($2/month) – Note limit is doubled_
+
 _More Outlines ($3/month) – Outline limit is doubled_
+
 _Avid Writer ($5/month) – Character limits are doubled_
+
 _Professional ($12/month) – Note and outline limits are g o n e_
