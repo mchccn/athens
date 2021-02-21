@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400&family=Catamaran:wght@100;200;300;400&family=Fira+Code:wght@300;400&display=swap");
+*,
+*::before,
+*::after {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    --ff-primary: "Assistant", sans-serif;
+    --ff-secondary: "Catamaran", sans-serif;
+    --ff-mono: "Fira Code", monospace;
+
+    --fs-h1: 2.7rem;
+    --fs-h2: 2.15rem;
+    --fs-h3: 1.8rem;
+    --fs-h4: 1.5rem;
+    --fs-body: 1rem;
+
+    --clr-black: #111111;
+    --clr-dark: #242424;
+    --clr-main: #6366f1;
+    --clr-side: #818cf8;
+    --clr-red: #f04847;
+    --clr-light: #fafafa;
+    --clr-light-grey: #eeeeee;
+    --clr-dark-grey: #999999;
+
+    height: 100%;
+
+    scroll-behavior: smooth;
+
+    overflow-x: hidden;
+    overscroll-behavior: none;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    background-color: var(--clr-light);
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: var(--fs-h1);
+}
+
+h2 {
+    font-size: var(--fs-h2);
+}
+
+h3 {
+    font-size: var(--fs-h3);
+}
+
+h4 {
+    font-size: var(--fs-h4);
+}
+
+p {
+    font-size: var(--fs-body);
+}
+
+a {
+    cursor: pointer;
+    color: var(--clr-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 800px) {
+    html {
+        --fs-h1: 3rem;
+        --fs-h2: 2.4rem;
+        --fs-h3: 2rem;
+        --fs-h4: 1.5rem;
+        --fs-body: 1.25rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        --fs-h1: 3.5rem;
+        --fs-h2: 2.9rem;
+        --fs-h3: 2.5rem;
+        --fs-h4: 1.8rem;
+        --fs-body: 1.4rem;
+    }
+}
+
+@media (min-width: 1500px) {
+    html {
+        --fs-h1: 3.75rem;
+        --fs-h2: 3.25rem;
+        --fs-h3: 2.7rem;
+        --fs-h4: 2rem;
+        --fs-body: 1.4rem;
+    }
+}
+
+@media (min-width: 1750px) {
+    html {
+        --fs-h1: 4.1rem;
+        --fs-h2: 3.45rem;
+        --fs-h3: 2.8rem;
+        --fs-h4: 2.15rem;
+        --fs-body: 1.4rem;
+    }
+}
+
+@media (min-width: 2000px) {
+    html {
+        --fs-h1: 4.2rem;
+        --fs-h2: 3.55rem;
+        --fs-h3: 3rem;
+        --fs-h4: 2.25rem;
+        --fs-body: 1.45rem;
+    }
+}
