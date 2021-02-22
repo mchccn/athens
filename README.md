@@ -69,8 +69,8 @@ remark                Markdown parser
 
 ```
 notes          64 notes
-  name         96 chars
-  note         2048 chars
+  name         128 chars
+  note         4096 chars
   website      512 chars
 ```
 
