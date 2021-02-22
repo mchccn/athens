@@ -1,4 +1,5 @@
 import { AppProps } from "next/app";
+import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 import "../styles/splash.css";
 import "../styles/style.css";

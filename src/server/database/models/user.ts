@@ -4,7 +4,7 @@ interface IUser extends Document {
     _id: string;
     username: string;
     avatar: string;
-    premium: ("PRIVACY" | "NOTES" | "OUTLINES" | "WRITER" | "PROFESSIONAL")[];
+    premium: ("PRIVACY" | "NOTES" | "WRITER" | "PROFESSIONAL")[];
     isSubscribed: boolean;
 }
 

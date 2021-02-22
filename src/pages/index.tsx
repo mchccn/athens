@@ -6,17 +6,18 @@ import Nav from "../components/nav";
 import Note from "../components/note";
 import Sidebar from "../components/sidebar";
 import Splash from "../components/splash";
-import notes, { INote } from "../server/database/models/note";
+import notes from "../server/database/models/note";
 
 interface IIndexProps {
-    user: string;
-    notes: INote[];
+    user: any;
+    notes: any;
 }
 
 type SortBy = "NEWEST" | "OLDEST" | "RELEVANT" | "DUE_DATE";
 
 export default function Index({ user, notes }: IIndexProps) {
     user = JSON.parse(user);
+    notes = JSON.parse(notes);
 
     const [search, setSearch] = useState("");
 
@@ -59,7 +60,9 @@ export default function Index({ user, notes }: IIndexProps) {
                                 />
                             </div>
                         </Nav>
-                        <div>{notes.map(Note)}</div>
+                        <div>
+                            <div>{notes.map(Note)}</div>
+                        </div>
                     </div>
                 </div>
             ) : (
@@ -75,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             //@ts-ignore
             user: ctx.req.user ? JSON.stringify(ctx.req.user) : null,
             //@ts-ignore
-            notes: ctx.req.user ? await notes.find({ author: ctx.req.user._id }) : null,
+            notes: ctx.req.user ? JSON.stringify(await notes.find({ author: ctx.req.user._id })) : null,
         },
     };
 };

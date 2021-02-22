@@ -1,9 +1,12 @@
 import { GetServerSideProps } from "next";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
 import Layout from "../components/layout";
 import Nav from "../components/nav";
 import Sidebar from "../components/sidebar";
 import Splash from "../components/splash";
+
+//! Add CSS
 
 interface IIndexProps {
     user: string;
@@ -14,7 +17,9 @@ export default function Index({ user }: IIndexProps) {
 
     const [name, setName] = useState("");
     const [note, setNote] = useState("");
-    const [site, setSite] = useState("");
+    const [website, setWebsite] = useState("");
+    const [due, setDue] = useState(new Date());
+    const [isPrivate, setIsPrivate] = useState(false);
 
     return (
         <Layout user={user}>
@@ -42,12 +47,40 @@ export default function Index({ user }: IIndexProps) {
                             ></textarea>
                             <input
                                 className="site"
-                                value={site}
-                                onChange={(e) => setSite(e.target.value)}
                                 type="text"
+                                value={website}
+                                onChange={(e) => setWebsite(e.target.value)}
+                                placeholder="A special website..."
                                 maxLength={512}
                             />
-                            <input className="date" type="date" />
+                            <DatePicker selected={due} onChange={(d) => setDue(Array.isArray(d) ? d[0] : d || new Date())} />
+                            <input type="checkbox" checked={isPrivate} onChange={(e) => setIsPrivate(e.target.checked)} />
+                            {name && note && website ? (
+                                <button
+                                    className="new-note"
+                                    onClick={async () => {
+                                        await fetch("/api/new", {
+                                            method: "POST",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                            },
+                                            credentials: "include",
+                                            body: JSON.stringify({
+                                                name,
+                                                note,
+                                                website,
+                                                due,
+                                                isPrivate,
+                                            }),
+                                        });
+                                        const a = document.createElement("a");
+                                        a.href = "/";
+                                        a.click();
+                                    }}
+                                >
+                                    Create
+                                </button>
+                            ) : null}
                         </div>
                     </div>
                 </div>

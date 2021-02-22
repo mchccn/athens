@@ -27,7 +27,7 @@ export default function Layout({ children, title, user }: ILayoutProps) {
                 <meta property="og:image" content="" />
                 <meta property="og:image" content="" />
                 <title>{title ? `Athens | ${title}` : "Athens"}</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/fav.png" />
             </Head>
             <div className="app">{children}</div>
         </div>

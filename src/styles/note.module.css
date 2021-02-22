@@ -1,0 +1,23 @@
+.note {
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+    width: 100%;
+
+    border: 1px solid var(--clr-dark);
+    border-radius: 3px;
+
+    display: inline-block;
+}
+
+.note a {
+    color: var(--clr-main);
+}
+
+.overdue {
+    color: var(--clr-red);
+}
+
+.overdue::before {
+    content: "over";
+}
