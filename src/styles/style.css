@@ -22,9 +22,12 @@ html {
     --clr-dark: #242424;
     --clr-main: #6366f1;
     --clr-side: #818cf8;
+    --clr-top: #5f79ff;
     --clr-red: #f04847;
+    --clr-green: #29d4a1;
+    --clr-blue: #67afdf;
     --clr-light: #fafafa;
-    --clr-light-grey: #dedede;
+    --clr-light-grey: #f3f4f6;
     --clr-dark-grey: #999999;
 
     height: 100%;
@@ -49,8 +52,95 @@ body {
     min-height: 100vh;
 }
 
+.layout {
+    display: flex;
+
+    min-height: 100vh;
+}
+
 .content {
-    flex: 1 0 auto;
+    flex: 1;
+
+    min-width: calc(100vw - 8px);
+}
+
+.content > div {
+    padding: 1rem;
+}
+
+.content > div > input {
+    margin: 0.25rem;
+
+    display: block;
+}
+
+.control {
+    margin-left: 0.5rem;
+
+    display: flex;
+    align-items: center;
+}
+
+.control p {
+    margin-right: 0.35rem;
+}
+
+.control p,
+.control .Dropdown-root {
+    font-size: 1rem;
+}
+
+.control .Dropdown-option {
+    padding: 0.5rem !important;
+}
+
+.control .Dropdown-control {
+    padding: 0.25rem 1.75rem 0.25rem 0.25rem;
+}
+
+.search {
+    margin: 0.5rem;
+    padding: 0.5rem;
+
+    width: 200px;
+
+    font-size: 1rem;
+
+    border: none;
+    border-radius: 4px;
+
+    transition: 0.25s width ease;
+}
+
+.search:focus {
+    width: 300px;
+}
+
+.note-editor {
+    margin: 0.25rem;
+    padding: 0.5rem;
+
+    width: 400px;
+    height: 600px;
+
+    display: block;
+
+    font-size: 1rem;
+    font-family: var(--ff-primary);
+
+    border-radius: 4px;
+    border: 1px solid var(--clr-dark-grey);
+
+    resize: none;
+}
+
+.site {
+    padding: 0.25rem;
+
+    width: 400px;
+
+    font-size: 1rem;
+    font-family: var(--ff-primary);
 }
 
 h1,
@@ -103,6 +193,10 @@ a {
         --fs-h4: 1.45rem;
         --fs-body: 1.25rem;
     }
+
+    .content {
+        min-width: unset;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -112,6 +206,19 @@ a {
         --fs-h3: 1.8rem;
         --fs-h4: 1.6rem;
         --fs-body: 1.3rem;
+    }
+
+    .search {
+        width: 250px;
+    }
+
+    .search:focus {
+        width: 375px;
+    }
+
+    .note-editor {
+        width: 500px;
+        height: 650px;
     }
 }
 
@@ -123,6 +230,19 @@ a {
         --fs-h4: 1.7rem;
         --fs-body: 1.35rem;
     }
+
+    .search {
+        width: 300px;
+    }
+
+    .search:focus {
+        width: 450px;
+    }
+
+    .note-editor {
+        width: 600px;
+        height: 700px;
+    }
 }
 
 @media (min-width: 1800px) {
@@ -132,5 +252,18 @@ a {
         --fs-h3: 2rem;
         --fs-h4: 1.8rem;
         --fs-body: 1.4rem;
+    }
+
+    .search {
+        width: 350px;
+    }
+
+    .search:focus {
+        width: 525px;
+    }
+
+    .note-editor {
+        width: 700px;
+        height: 700px;
     }
 }

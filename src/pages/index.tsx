@@ -1,23 +1,66 @@
 import { GetServerSideProps } from "next";
+import { useState } from "react";
+import Dropdown from "react-dropdown";
 import Layout from "../components/layout";
+import Nav from "../components/nav";
+import Note from "../components/note";
+import Sidebar from "../components/sidebar";
 import Splash from "../components/splash";
+import notes, { INote } from "../server/database/models/note";
 
 interface IIndexProps {
     user: string;
+    notes: INote[];
 }
 
-export default function Index({ user }: IIndexProps) {
+type SortBy = "NEWEST" | "OLDEST" | "RELEVANT" | "DUE_DATE";
+
+export default function Index({ user, notes }: IIndexProps) {
     user = JSON.parse(user);
+
+    const [search, setSearch] = useState("");
 
     return (
         <Layout user={user}>
             {user ? (
-                <div>
-                    <h1>ur logged in</h1>
-                    <h2>ur logged in</h2>
-                    <h3>ur logged in</h3>
-                    <h4>ur logged in</h4>
-                    <p>ur logged in</p>
+                <div className="layout">
+                    <Sidebar user={user} />
+                    <div className="content">
+                        <Nav>
+                            <input
+                                className="search"
+                                type="text"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                placeholder="Search..."
+                            />
+                            <div className="control">
+                                <p>sort by</p>
+                                <Dropdown
+                                    options={[
+                                        {
+                                            label: "newest",
+                                            value: "NEWEST",
+                                        },
+                                        {
+                                            label: "oldest",
+                                            value: "OLDEST",
+                                        },
+                                        {
+                                            label: "relevant",
+                                            value: "RELEVANT",
+                                        },
+                                        {
+                                            label: "due date",
+                                            value: "DUE_DATE",
+                                        },
+                                    ]}
+                                    value={"newest"}
+                                />
+                            </div>
+                        </Nav>
+                        <div>{notes.map(Note)}</div>
+                    </div>
                 </div>
             ) : (
                 <Splash />
@@ -31,6 +74,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         props: {
             //@ts-ignore
             user: ctx.req.user ? JSON.stringify(ctx.req.user) : null,
+            //@ts-ignore
+            notes: ctx.req.user ? await notes.find({ author: ctx.req.user._id }) : null,
         },
     };
 };

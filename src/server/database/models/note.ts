@@ -1,11 +1,12 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface INote extends Document {
+    author: string;
     name: string;
     note: string;
     website: string;
-    private: boolean;
-    id: string;
+    due: Date;
+    isPrivate: boolean;
 }
 
 export const noteSchema = new Schema({
@@ -25,7 +26,11 @@ export const noteSchema = new Schema({
         type: String,
         required: true,
     },
-    private: {
+    due: {
+        type: Date,
+        required: true,
+    },
+    isPrivate: {
         type: Boolean,
         required: true,
     },
