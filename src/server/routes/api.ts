@@ -1,5 +1,6 @@
 import express from "express";
 import notes from "../database/models/note";
+import users from "../database/models/user";
 
 const api = express.Router();
 
@@ -25,6 +26,28 @@ api.post("/new", async (req, res) => {
         });
 
         return res.redirect("/");
+    } catch (e) {
+        console.log(e);
+        return res.sendStatus(500);
+    }
+});
+
+api.post("/user/theme", async (req, res) => {
+    try {
+        if (!req.user) return res.sendStatus(403);
+
+        const { theme } = req.body;
+
+        if (!theme) return res.sendStatus(400);
+
+        if (!["DEFAULT", "DARK", "DISCORD", "CRIMSON", "SKY", "NEO"].includes(theme)) return res.sendStatus(400);
+
+        //@ts-ignore
+        await users.findByIdAndUpdate(req.user._id, {
+            theme,
+        });
+
+        return res.sendStatus(200);
     } catch (e) {
         console.log(e);
         return res.sendStatus(500);

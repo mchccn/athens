@@ -8,11 +8,11 @@ import Splash from "../components/splash";
 
 //! Add CSS
 
-interface IIndexProps {
+interface INewProps {
     user: string;
 }
 
-export default function Index({ user }: IIndexProps) {
+export default function New({ user }: INewProps) {
     user = JSON.parse(user);
 
     const [name, setName] = useState("");

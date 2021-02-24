@@ -4,6 +4,7 @@ interface IUser extends Document {
     _id: string;
     username: string;
     avatar: string;
+    theme: "DEFAULT" | "DARK" | "DISCORD" | "CRIMSON" | "SKY" | "NEO";
     premium: ("PRIVACY" | "NOTES" | "WRITER" | "PROFESSIONAL")[];
     isSubscribed: boolean;
 }
@@ -20,6 +21,11 @@ export const userSchema = new Schema({
     avatar: {
         type: String,
         required: true,
+    },
+    theme: {
+        type: String,
+        enum: ["DEFAULT", "DARK", "DISCORD", "CRIMSON", "SKY", "NEO"],
+        default: "DEFAULT",
     },
     premium: {
         type: [String],

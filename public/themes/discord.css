@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400&family=Catamaran:wght@100;200;300;400&family=Fira+Code:wght@300;400&display=swap");
+
+html {
+    --ff-primary: "Assistant", sans-serif;
+    --ff-secondary: "Catamaran", sans-serif;
+    --ff-mono: "Fira Code", monospace;
+
+    --clr-black: #d6d6d7;
+    --clr-dark: #dcddde;
+    --clr-main: #748bdc;
+    --clr-side: #8296df;
+    --clr-top: #33353a;
+    --clr-red: #f04847;
+    --clr-green: #43b581;
+    --clr-blue: #8899f7;
+    --clr-light: #37393f;
+    --clr-light-grey: #303136;
+    --clr-text: #dddddd;
+    --clr-dark-grey: #8e9297;
+    --clr-dark-dark-grey: #555555;
+}
+
+input,
+textarea {
+    color: var(--clr-black) !important;
+
+    background-color: var(--clr-light-grey) !important;
+
+    border: 1px solid var(--clr-dark-dark-grey) !important;
+    border-radius: 3px;
+}
+
+.Dropdown-root {
+    color: var(--clr-black) !important;
+}
+
+.Dropdown-placeholder {
+    color: var(--clr-black) !important;
+}
+
+.Dropdown-option {
+    color: var(--clr-black) !important;
+    background-color: var(--clr-light-grey) !important;
+}
+
+.Dropdown-control {
+    background-color: var(--clr-light-grey) !important;
+
+    border: 1px solid var(--clr-dark-dark-grey) !important;
+}

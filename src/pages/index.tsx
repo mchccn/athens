@@ -1,12 +1,12 @@
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dropdown from "react-dropdown";
 import Layout from "../components/layout";
 import Nav from "../components/nav";
 import Note from "../components/note";
 import Sidebar from "../components/sidebar";
 import Splash from "../components/splash";
-import notes from "../server/database/models/note";
+import notes, { INote } from "../server/database/models/note";
 
 interface IIndexProps {
     user: any;
@@ -19,7 +19,18 @@ export default function Index({ user, notes }: IIndexProps) {
     user = JSON.parse(user);
     notes = JSON.parse(notes);
 
+    const sortFns: Record<SortBy, (a: INote, b: INote) => number> = {
+        NEWEST: (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+        OLDEST: (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        RELEVANT: (a, b) => new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime(),
+        DUE_DATE: (a, b) => new Date(a.due).getTime() - new Date(b.due).getTime(),
+    };
+
     const [search, setSearch] = useState("");
+    const [sort, setSort] = useState<SortBy>("NEWEST");
+    const [data, setData] = useState<INote[]>([]);
+
+    useEffect(() => setData([...(notes as INote[])].sort(sortFns[sort])), [sort]);
 
     return (
         <Layout user={user}>
@@ -57,11 +68,12 @@ export default function Index({ user, notes }: IIndexProps) {
                                         },
                                     ]}
                                     value={"newest"}
+                                    onChange={({ value }) => setSort(value as SortBy)}
                                 />
                             </div>
                         </Nav>
                         <div>
-                            <div>{notes.map(Note)}</div>
+                            <div className="notes">{data.map(Note)}</div>
                         </div>
                     </div>
                 </div>

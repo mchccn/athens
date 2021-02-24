@@ -28,6 +28,7 @@ export default function Layout({ children, title, user }: ILayoutProps) {
                 <meta property="og:image" content="" />
                 <title>{title ? `Athens | ${title}` : "Athens"}</title>
                 <link rel="icon" href="/fav.png" />
+                <link rel="stylesheet" href={`/themes/${user.theme.toLowerCase()}.css`} />
             </Head>
             <div className="app">{children}</div>
         </div>

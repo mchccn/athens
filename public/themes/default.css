@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400&family=Catamaran:wght@100;200;300;400&family=Fira+Code:wght@300;400&display=swap");
+
+html {
+    --ff-primary: "Assistant", sans-serif;
+    --ff-secondary: "Catamaran", sans-serif;
+    --ff-mono: "Fira Code", monospace;
+
+    --clr-black: #111111;
+    --clr-dark: #242424;
+    --clr-main: #6366f1;
+    --clr-side: #818cf8;
+    --clr-top: #5f79ff;
+    --clr-red: #f04847;
+    --clr-green: #29d4a1;
+    --clr-blue: #67afdf;
+    --clr-light: #fafafa;
+    --clr-light-grey: #f3f4f6;
+    --clr-text: #f3f4f6;
+    --clr-dark-grey: #999999;
+}

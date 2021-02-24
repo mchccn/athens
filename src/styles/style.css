@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400&family=Catamaran:wght@100;200;300;400&family=Fira+Code:wght@300;400&display=swap");
-
 *,
 *::before,
 *::after {
@@ -8,27 +6,11 @@
 }
 
 html {
-    --ff-primary: "Assistant", sans-serif;
-    --ff-secondary: "Catamaran", sans-serif;
-    --ff-mono: "Fira Code", monospace;
-
     --fs-h1: 2.15rem;
     --fs-h2: 1.9rem;
     --fs-h3: 1.65rem;
     --fs-h4: 1.3rem;
     --fs-body: 1.2rem;
-
-    --clr-black: #111111;
-    --clr-dark: #242424;
-    --clr-main: #6366f1;
-    --clr-side: #818cf8;
-    --clr-top: #5f79ff;
-    --clr-red: #f04847;
-    --clr-green: #29d4a1;
-    --clr-blue: #67afdf;
-    --clr-light: #fafafa;
-    --clr-light-grey: #f3f4f6;
-    --clr-dark-grey: #999999;
 
     height: 100%;
 
@@ -43,6 +25,7 @@ body {
     height: 100%;
     font-family: var(--ff-primary);
     font-size: var(--fs-body);
+    color: var(--clr-dark);
     background-color: var(--clr-light);
 }
 
@@ -58,6 +41,11 @@ body {
     min-height: 100vh;
 }
 
+.notes {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -65,6 +53,22 @@ body {
     flex: 1;
 
     min-width: calc(100vw - 8px);
+}
+
+.settings {
+    align-self: center;
+
+    display: grid;
+    place-items: center;
+}
+
+.settings > div {
+    min-width: 400px;
+    min-height: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .content > div {
@@ -90,12 +94,17 @@ body {
 }
 
 .control p {
+    color: var(--clr-text);
     margin-right: 0.35rem;
 }
 
 .control p,
 .control .Dropdown-root {
     font-size: 1rem;
+}
+
+.control .Dropdown-root {
+    min-width: 100px;
 }
 
 .control .Dropdown-option {
@@ -110,7 +119,7 @@ body {
     margin: 0.5rem;
     padding: 0.5rem;
 
-    width: 200px;
+    width: 400px;
 
     font-size: 1rem;
 
@@ -118,10 +127,6 @@ body {
     border-radius: 4px;
 
     transition: 0.25s width ease;
-}
-
-.search:focus {
-    width: 300px;
 }
 
 .note-editor {
@@ -185,12 +190,8 @@ a {
     text-decoration: none;
 }
 
-.purple {
-    color: var(--clr-main);
-}
-
-.lpurple {
-    color: var(--clr-side);
+input {
+    border: none;
 }
 
 @media (min-width: 800px) {
@@ -216,16 +217,16 @@ a {
         --fs-body: 1.3rem;
     }
 
-    .search {
-        width: 250px;
+    .notes {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .search:focus {
-        width: 375px;
+    .search {
+        width: 450px;
     }
 
     .note-editor {
-        width: 500px;
+        width: 450px;
         height: 650px;
     }
 }
@@ -239,27 +240,31 @@ a {
         --fs-body: 1.35rem;
     }
 
-    .search {
-        width: 300px;
+    .notes {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .search:focus {
-        width: 450px;
+    .search {
+        width: 500px;
     }
 
     .note-editor {
-        width: 600px;
+        width: 500px;
         height: 700px;
     }
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 2000px) {
     html {
         --fs-h1: 2.4rem;
         --fs-h2: 2.2rem;
         --fs-h3: 2rem;
         --fs-h4: 1.8rem;
         --fs-body: 1.4rem;
+    }
+
+    .notes {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     .search {
