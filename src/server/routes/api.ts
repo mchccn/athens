@@ -54,4 +54,13 @@ api.post("/user/theme", async (req, res) => {
     }
 });
 
+api.get("/user/delete", async (req, res) => {
+    if (req.user) {
+        //@ts-ignore
+        await users.findByIdAndDelete(req.user._id);
+    }
+
+    return res.sendStatus(200);
+});
+
 export default api;

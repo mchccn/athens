@@ -4,8 +4,6 @@ import Layout from "../components/layout";
 import Sidebar from "../components/sidebar";
 import Splash from "../components/splash";
 
-//! Add CSS
-
 interface ISettingsProps {
     user: any;
 }
@@ -71,6 +69,15 @@ export default function Settings({ user }: ISettingsProps) {
                                         }}
                                     />
                                 </div>
+                                <button
+                                    className="delete"
+                                    onClick={async () => {
+                                        await fetch("/api/user/delete");
+                                        location.reload();
+                                    }}
+                                >
+                                    Delete account
+                                </button>
                             </div>
                         </div>
                     </div>
