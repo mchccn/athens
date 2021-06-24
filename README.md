@@ -1,6 +1,6 @@
 # Athens Project
 
-#### This repository is for the [Cursors] does the entire fucking thing in one week challenge
+#### This repository is ~~for the [Cursors] does the entire fucking thing in one week challenge~~ dead
 
 **Athens Project Routing**
 
